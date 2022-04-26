@@ -10,7 +10,7 @@ namespace Avion
 	public class AvionsMainPage : ContentPage
 	{
 		ImageButton autopiloteImageButton;
-		ImageButton marquesImageButton;
+		ImageButton commandesImageButton;
 		ImageButton dateRequiseImageButton;
 		ImageButton munitionsImageButton;
 
@@ -34,15 +34,15 @@ namespace Avion
 
 			autopiloteImageButton.Clicked += PageSuivanteButton_Clicked;
 
-			marquesImageButton = new ImageButton
+			commandesImageButton = new ImageButton
 			{
-				ClassId = "modeles",
+				ClassId = "commandes",
 				Source = "Images\\modeles.jpg",
 				HorizontalOptions = LayoutOptions.Center,
 				VerticalOptions = LayoutOptions.CenterAndExpand
 			};
 
-			marquesImageButton.Clicked += PageSuivanteButton_Clicked;
+			commandesImageButton.Clicked += PageSuivanteButton_Clicked;
 
 			dateRequiseImageButton = new ImageButton
 			{
@@ -68,7 +68,7 @@ namespace Avion
 			{
 				Children = {
 					autopiloteImageButton,
-					marquesImageButton,
+					commandesImageButton,
 					dateRequiseImageButton,
 					munitionsImageButton
 				}
@@ -84,8 +84,8 @@ namespace Avion
 					case "autopilote":
 						await Navigation.PushAsync(new AutoPilotePage("Dominic Robichaud\r\nJonathan Levesque\r\nMartin Chiasson-Duguay", "Munitions"));
 						break;
-					case "modeles":
-						await Navigation.PushAsync(new MunitionsPage("Dominic Robichaud\r\nJonathan Levesque\r\nMartin Chiasson-Duguay", "Munitions"));
+					case "commandes":
+						await Navigation.PushAsync(new CommandesPage("Dominic Robichaud\r\nJonathan Levesque\r\nMartin Chiasson-Duguay", "Munitions"));
 						break;
 					case "dateRequise":
 						await Navigation.PushAsync(new DateRequisePage("Dominic Robichaud\r\nJonathan Levesque\r\nMartin Chiasson-Duguay", "Date Requise"));
