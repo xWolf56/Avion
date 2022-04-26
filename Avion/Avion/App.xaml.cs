@@ -10,7 +10,8 @@ namespace Avion
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            AvionsMainPage avionsMainPage = new AvionsMainPage();
+            MainPage = new NavigationPage(avionsMainPage);
         }
 
         protected override void OnStart()

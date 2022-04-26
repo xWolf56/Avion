@@ -2,29 +2,35 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace Avion
 {
-    public class JetsWeapon : ContentPage
+    public class MunitionsPage : ContentPage
     {
-        public JetsWeapon(String memberNames, String titre)
+        public MunitionsPage(string memberNames, string titre)
+        {
+            InitializeComponent(memberNames, titre);
+        }
+
+        private void InitializeComponent(string memberNames, string titre)
         {
             var fsTitle = new FormattedString();
             var fsSubject = new FormattedString();
             var fsMemberNames = new FormattedString();
 
-            fsTitle.Spans.Add(new Span { Text = titre, ForegroundColor = Color.White, BackgroundColor = Color.Black, FontSize = 30, FontAttributes = FontAttributes.Bold });
+            fsTitle.Spans.Add(new Span { Text = titre, ForegroundColor = Color.White, FontSize = 30, FontAttributes = FontAttributes.Bold });
 
             fsSubject.Spans.Add(new Span { Text = "Munitions aéronautiques", ForegroundColor = Color.Red, FontSize = 15 });
 
-            fsMemberNames.Spans.Add(new Span { Text = memberNames, ForegroundColor = Color.White, BackgroundColor = Color.Black, FontSize = 35 });
+            fsMemberNames.Spans.Add(new Span { Text = memberNames, ForegroundColor = Color.White, FontSize = 35 });
 
             Label lblTitle = new Label()
             {
                 FormattedText = fsTitle,
-                HorizontalOptions = LayoutOptions.Center
+                HorizontalOptions = LayoutOptions.Center,
+                BackgroundColor = Color.Black
             };
 
             Label lblSubject = new Label()
@@ -36,7 +42,8 @@ namespace Avion
             Label lblMembers = new Label()
             {
                 FormattedText = fsMemberNames,
-                HorizontalOptions = LayoutOptions.Center
+                HorizontalOptions = LayoutOptions.Center,
+                BackgroundColor = Color.Black
             };
 
             Label pickerValue = new Label()
@@ -44,14 +51,14 @@ namespace Avion
                 HorizontalOptions = LayoutOptions.Center
             };
 
-            Button pageSuivanteButton = new Button
+            Button pagePrecedenteButton = new Button
             {
                 Text = "Page suivante",
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.Fill
             };
 
-            pageSuivanteButton.Clicked += PageSuivanteButton_Clicked;
+            pagePrecedenteButton.Clicked += PagePrecedenteButton_Clicked;
 
             Picker picker = new Picker
             {
@@ -76,21 +83,21 @@ namespace Avion
                     lblSubject,
                     pickerValue,
                     picker,
-                    pageSuivanteButton,
+                    pagePrecedenteButton,
                     lblMembers
                 }
             };
+        }
 
-            async void PageSuivanteButton_Clicked(object sender, EventArgs e)
+        async void PagePrecedenteButton_Clicked(object sender, EventArgs e)
+        {
+            try
             {
-                try
-                {
-                    await Navigation.PushAsync(new MainPage());
-                }
-                catch (Exception ex)
-                {
-                    await DisplayAlert("Erreur", ex.ToString(), "Annuler");
-                }
+                await Navigation.PopAsync();
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Erreur", ex.ToString(), "Annuler");
             }
         }
     }
