@@ -16,8 +16,28 @@ namespace Avion
 
 		private void InitializeComponent()
 		{
-			var fsTitle = new FormattedString(); 
-			fsTitle.Spans.Add(new Span { Text = "Avions", ForegroundColor = Color.White, FontSize = 30, FontAttributes = FontAttributes.Bold });
+			var titreFStr = new FormattedString();
+			titreFStr.Spans.Add(new Span { Text = "Avions", ForegroundColor = Color.White, FontSize = 30, FontAttributes = FontAttributes.Bold });
+
+			ImageButton marquesImageButton = new ImageButton
+			{
+				ClassId = "modeles",
+				Source = "modeles.jpg",
+				HorizontalOptions = LayoutOptions.Center,
+				VerticalOptions = LayoutOptions.CenterAndExpand
+			};
+
+			marquesImageButton.Clicked += PageSuivanteButton_Clicked;
+
+			ImageButton dateRequiseImageButton = new ImageButton
+			{
+				ClassId = "dateRequise",
+				Source = "commandes.jpg",
+				HorizontalOptions = LayoutOptions.Center,
+				VerticalOptions = LayoutOptions.CenterAndExpand
+			};
+
+			dateRequiseImageButton.Clicked += PageSuivanteButton_Clicked;
 
 			ImageButton munitionsImageButton = new ImageButton
 			{
@@ -32,6 +52,8 @@ namespace Avion
 			Content = new StackLayout
 			{
 				Children = {
+					marquesImageButton,
+					dateRequiseImageButton,
 					munitionsImageButton
 				}
 			};
@@ -43,6 +65,12 @@ namespace Avion
 			{
 				switch((sender as ImageButton).ClassId)
 				{
+					case "marques":
+						await Navigation.PushAsync(new MunitionsPage("Dominic Robichaud\r\nJonathan Levesque\r\nMartin Chiasson-Duguay", "Munitions"));
+						break;
+					case "dateRequise":
+						await Navigation.PushAsync(new DateRequisePage("Dominic Robichaud\r\nJonathan Levesque\r\nMartin Chiasson-Duguay", "Date Requise"));
+						break;
 					case "munitions":
 						await Navigation.PushAsync(new MunitionsPage("Dominic Robichaud\r\nJonathan Levesque\r\nMartin Chiasson-Duguay", "Munitions"));
 						break;

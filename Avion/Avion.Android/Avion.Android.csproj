@@ -83,7 +83,6 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Avion\Avion.csproj">
       <Project>{7366B4EF-74FE-4B66-8864-045B2C739E7D}</Project>
@@ -92,6 +91,10 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\munitions.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\drawable\commandes.jpg" />
+    <Content Include="Resources\drawable\modeles.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
