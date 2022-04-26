@@ -9,6 +9,16 @@ namespace Avion
 {
     public class DateRequisePage : ContentPage
     {
+        Label titreLabel;
+        Label sujetLabel;
+        Label valeurDateLabel;
+        Label membresLabel;
+
+        DatePicker datePicker;
+        TimePicker timePicker;
+
+        Button pagePrecedenteButton;
+
         public DateRequisePage(string memberNames, string titre)
         {
             InitializeComponent(memberNames, titre);
@@ -26,42 +36,42 @@ namespace Avion
 
             membresFStr.Spans.Add(new Span { Text = memberNames, ForegroundColor = Color.White, FontSize = 35 });
 
-            Label titreLabel = new Label()
+            titreLabel = new Label()
             {
                 FormattedText = titreFStr,
                 HorizontalOptions = LayoutOptions.Center,
                 BackgroundColor = Color.Black
             };
 
-            Label sujetLabel = new Label()
+            sujetLabel = new Label()
             {
                 FormattedText = sujetFStr,
                 HorizontalOptions = LayoutOptions.Center
             };
 
-            Label valeurDateLabel = new Label()
+            valeurDateLabel = new Label()
             {
                 HorizontalOptions = LayoutOptions.Center
             };
 
-            Label membresLabel = new Label()
+            membresLabel = new Label()
             {
                 FormattedText = membresFStr,
                 HorizontalOptions = LayoutOptions.Center,
                 BackgroundColor = Color.Black
             };
 
-            DatePicker datePicker = new DatePicker()
+            datePicker = new DatePicker()
             {
                 HorizontalOptions = LayoutOptions.Center
             };
 
-            TimePicker timePicker = new TimePicker()
+            timePicker = new TimePicker()
             {
                 HorizontalOptions = LayoutOptions.Center
             };
 
-            Button pagePrecedenteButton = new Button
+            pagePrecedenteButton = new Button
             {
                 Text = "Page precedente",
                 HorizontalOptions = LayoutOptions.Center,

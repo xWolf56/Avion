@@ -9,6 +9,11 @@ namespace Avion
 {
 	public class AvionsMainPage : ContentPage
 	{
+		ImageButton autopiloteImageButton;
+		ImageButton marquesImageButton;
+		ImageButton dateRequiseImageButton;
+		ImageButton munitionsImageButton;
+
 		public AvionsMainPage()
 		{
 			InitializeComponent();
@@ -19,30 +24,40 @@ namespace Avion
 			var titreFStr = new FormattedString();
 			titreFStr.Spans.Add(new Span { Text = "Avions", ForegroundColor = Color.White, FontSize = 30, FontAttributes = FontAttributes.Bold });
 
-			ImageButton marquesImageButton = new ImageButton
+			autopiloteImageButton = new ImageButton
+			{
+				ClassId = "autopilote",
+				Source = "Images\\autopilote.jpg",
+				HorizontalOptions = LayoutOptions.Center,
+				VerticalOptions = LayoutOptions.CenterAndExpand
+			};
+
+			autopiloteImageButton.Clicked += PageSuivanteButton_Clicked;
+
+			marquesImageButton = new ImageButton
 			{
 				ClassId = "modeles",
-				Source = "modeles.jpg",
+				Source = "Images\\modeles.jpg",
 				HorizontalOptions = LayoutOptions.Center,
 				VerticalOptions = LayoutOptions.CenterAndExpand
 			};
 
 			marquesImageButton.Clicked += PageSuivanteButton_Clicked;
 
-			ImageButton dateRequiseImageButton = new ImageButton
+			dateRequiseImageButton = new ImageButton
 			{
 				ClassId = "dateRequise",
-				Source = "commandes.jpg",
+				Source = "Images\\commandes.jpg",
 				HorizontalOptions = LayoutOptions.Center,
 				VerticalOptions = LayoutOptions.CenterAndExpand
 			};
 
 			dateRequiseImageButton.Clicked += PageSuivanteButton_Clicked;
 
-			ImageButton munitionsImageButton = new ImageButton
+			munitionsImageButton = new ImageButton
 			{
 				ClassId = "munitions",
-				Source = "munitions.jpg",
+				Source = "Images\\munitions.jpg",
 				HorizontalOptions = LayoutOptions.Center,
 				VerticalOptions = LayoutOptions.CenterAndExpand
 			};
@@ -52,6 +67,7 @@ namespace Avion
 			Content = new StackLayout
 			{
 				Children = {
+					autopiloteImageButton,
 					marquesImageButton,
 					dateRequiseImageButton,
 					munitionsImageButton
@@ -65,7 +81,10 @@ namespace Avion
 			{
 				switch((sender as ImageButton).ClassId)
 				{
-					case "marques":
+					case "autopilote":
+						await Navigation.PushAsync(new AutoPilotePage("Dominic Robichaud\r\nJonathan Levesque\r\nMartin Chiasson-Duguay", "Munitions"));
+						break;
+					case "modeles":
 						await Navigation.PushAsync(new MunitionsPage("Dominic Robichaud\r\nJonathan Levesque\r\nMartin Chiasson-Duguay", "Munitions"));
 						break;
 					case "dateRequise":

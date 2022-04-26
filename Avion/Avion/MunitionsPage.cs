@@ -9,6 +9,15 @@ namespace Avion
 {
     public class MunitionsPage : ContentPage
     {
+        Label lblTitle;
+        Label lblSubject;
+        Label lblMembers;
+        Label pickerValue;
+
+        Picker picker;
+
+        Button pagePrecedenteButton;
+
         public MunitionsPage(string memberNames, string titre)
         {
             InitializeComponent(memberNames, titre);
@@ -26,41 +35,32 @@ namespace Avion
 
             fsMemberNames.Spans.Add(new Span { Text = memberNames, ForegroundColor = Color.White, FontSize = 35 });
 
-            Label lblTitle = new Label()
+            lblTitle = new Label()
             {
                 FormattedText = fsTitle,
                 HorizontalOptions = LayoutOptions.Center,
                 BackgroundColor = Color.Black
             };
 
-            Label lblSubject = new Label()
+            lblSubject = new Label()
             {
                 FormattedText = fsSubject,
                 HorizontalOptions = LayoutOptions.Center
             };
 
-            Label lblMembers = new Label()
+            lblMembers = new Label()
             {
                 FormattedText = fsMemberNames,
                 HorizontalOptions = LayoutOptions.Center,
                 BackgroundColor = Color.Black
             };
 
-            Label pickerValue = new Label()
+            pickerValue = new Label()
             {
                 HorizontalOptions = LayoutOptions.Center
             };
 
-            Button pagePrecedenteButton = new Button
-            {
-                Text = "Page precedente",
-                HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.Fill
-            };
-
-            pagePrecedenteButton.Clicked += PagePrecedenteButton_Clicked;
-
-            Picker picker = new Picker
+            picker = new Picker
             {
                 Title = "Something",
                 VerticalOptions = LayoutOptions.Center
@@ -74,6 +74,15 @@ namespace Avion
             }
 
             picker.SelectedIndexChanged += (sender, args) => { pickerValue.Text = picker.Items[picker.SelectedIndex]; };
+
+            pagePrecedenteButton = new Button
+            {
+                Text = "Page precedente",
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.Fill
+            };
+
+            pagePrecedenteButton.Clicked += PagePrecedenteButton_Clicked;
 
             this.Content = new StackLayout
             {

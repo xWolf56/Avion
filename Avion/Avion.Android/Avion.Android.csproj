@@ -90,11 +90,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\munitions.jpg" />
+    <AndroidResource Include="Resources\drawable\Images\munitions.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\drawable\commandes.jpg" />
-    <Content Include="Resources\drawable\modeles.jpg" />
+    <Content Include="Resources\drawable\Images\autopilote.jpg" />
+    <Content Include="Resources\drawable\Images\commandes.jpg" />
+    <Content Include="Resources\drawable\Images\modeles.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

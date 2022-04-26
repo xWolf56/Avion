@@ -107,9 +107,10 @@
     <Content Include="Assets\LargeTile.scale-100.png" />
     <Content Include="Assets\LargeTile.scale-200.png" />
     <Content Include="Assets\LargeTile.scale-400.png" />
-    <Content Include="commandes.jpg" />
-    <Content Include="modeles.jpg" />
-    <Content Include="munitions.jpg" />
+    <Content Include="Images\autopilote.jpg" />
+    <Content Include="Images\commandes.jpg" />
+    <Content Include="Images\modeles.jpg" />
+    <Content Include="Images\munitions.jpg" />
     <Content Include="Assets\SmallTile.scale-100.png" />
     <Content Include="Assets\SmallTile.scale-200.png" />
     <Content Include="Assets\SmallTile.scale-400.png" />
