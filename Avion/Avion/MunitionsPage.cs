@@ -53,7 +53,7 @@ namespace Avion
 
             Button pagePrecedenteButton = new Button
             {
-                Text = "Page suivante",
+                Text = "Page precedente",
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.Fill
             };
