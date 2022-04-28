@@ -18,12 +18,16 @@ namespace Avion
 {
 	public class AvionsMainPage : ContentPage
 	{
-        #region Champs Privés
+		#region Champs Privés
+
+		Label titreLabel;
 
         ImageButton autopiloteImageButton;
 		ImageButton commandesImageButton;
 		ImageButton dateRequiseImageButton;
 		ImageButton munitionsImageButton;
+
+		Label membresLabel;
 
 		const string MEMBRES_STR = "Dominic Robichaud\r\nJonathan Levesque\r\nMartin Chiasson-Duguay";
 		#endregion
@@ -41,6 +45,16 @@ namespace Avion
 		{
 			var titreFStr = new FormattedString();
 			titreFStr.Spans.Add(new Span { Text = "Avions", ForegroundColor = Color.White, FontSize = 30, FontAttributes = FontAttributes.Bold });
+
+			var membresFStr = new FormattedString();
+			membresFStr.Spans.Add(new Span { Text = MEMBRES_STR, ForegroundColor = Color.White, FontSize = 30, FontAttributes = FontAttributes.Bold });
+
+			titreLabel = new Label()
+			{
+				FormattedText = titreFStr,
+				HorizontalOptions = LayoutOptions.Center,
+				BackgroundColor = Color.Black
+			};
 
 			autopiloteImageButton = new ImageButton
 			{
@@ -82,13 +96,22 @@ namespace Avion
 
 			munitionsImageButton.Clicked += PageSuivanteButton_Clicked;
 
+			membresLabel = new Label()
+			{
+				FormattedText = membresFStr,
+				HorizontalOptions = LayoutOptions.Center,
+				BackgroundColor = Color.Black
+			};
+
 			Content = new StackLayout
 			{
 				Children = {
+					titreLabel,
 					autopiloteImageButton,
 					commandesImageButton,
 					dateRequiseImageButton,
-					munitionsImageButton
+					munitionsImageButton,
+					membresLabel
 				}
 			};
 		}
