@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*
+        Programmeurs:
+                - Dominic Robichaud
+                - Jonathan Levesque
+                - Martin Chiasson Duguay
+    
+        Date: avril 2022
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +18,8 @@ namespace Avion
 {
     public class DateRequisePage : ContentPage
     {
+        #region Déclarations
+
         Label titreLabel;
         Label sujetLabel;
         Label valeurDateLabel;
@@ -18,14 +29,21 @@ namespace Avion
         TimePicker timePicker;
 
         Button pagePrecedenteButton;
+        #endregion
+
+        #region Init
 
         public DateRequisePage(string memberNames, string titre)
         {
             InitializeComponent(memberNames, titre);
         }
+        #endregion
 
+        #region Contrôles
         private void InitializeComponent(string memberNames, string titre)
         {
+            #region Assignation des contrôles
+
             FormattedString titreFStr = new FormattedString();
             FormattedString sujetFStr = new FormattedString();
             FormattedString membresFStr = new FormattedString();
@@ -97,6 +115,9 @@ namespace Avion
                 }
             };
         }
+        #endregion
+
+        #region Navigation page suivante
 
         async void PagePrecedenteButton_Clicked(object sender, EventArgs e)
         {
@@ -109,5 +130,8 @@ namespace Avion
                 await DisplayAlert("Erreur", ex.ToString(), "Annuler");
             }
         }
+        #endregion
+
+    #endregion
     }
 }

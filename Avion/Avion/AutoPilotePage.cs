@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*
+        Programmeurs:
+                - Dominic Robichaud
+                - Jonathan Levesque
+                - Martin Chiasson Duguay
+    
+        Date: avril 2022
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +18,8 @@ namespace Avion
 {
 	public class AutoPilotePage : ContentPage
     {
+        #region Déclarations
+
         Label titreLabel;
         Label autopiloteLabel;
         Label valeurAutopilotLabel;
@@ -21,14 +32,21 @@ namespace Avion
         Slider altitudeSlider;
 
         Button pagePrecedenteButton;
+        #endregion
 
+        #region Init
         public AutoPilotePage(string memberNames, string titre)
         {
             InitializeComponent(memberNames, titre);
         }
+        #endregion
+
+        #region Contrôles
 
         private void InitializeComponent(string memberNames, string titre)
         {
+            #region Assignation des contrôles
+
             var TitreFStr = new FormattedString();
             var autopiloteFStr = new FormattedString();
             var altitudeFStr = new FormattedString();
@@ -114,7 +132,9 @@ namespace Avion
                 }
             };
         }
+        #endregion
 
+        #region Navigation page suivante
         async void PagePrecedenteButton_Clicked(object sender, EventArgs e)
         {
             try
@@ -126,5 +146,8 @@ namespace Avion
                 await DisplayAlert("Erreur", ex.ToString(), "Annuler");
             }
         }
+        #endregion
+
+        #endregion
     }
 }

@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*
+        Programmeurs:
+                - Dominic Robichaud
+                - Jonathan Levesque
+                - Martin Chiasson Duguay
+    
+        Date: avril 2022
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,19 +18,29 @@ namespace Avion
 {
 	public class AvionsMainPage : ContentPage
 	{
-		ImageButton autopiloteImageButton;
+        #region Déclaration
+
+        ImageButton autopiloteImageButton;
 		ImageButton commandesImageButton;
 		ImageButton dateRequiseImageButton;
 		ImageButton munitionsImageButton;
+        #endregion
 
-		public AvionsMainPage()
+        #region Init
+
+        public AvionsMainPage()
 		{
 			InitializeComponent();
 		}
+        #endregion
 
-		private void InitializeComponent()
+        #region Contrôles
+
+        private void InitializeComponent()
 		{
-			var titreFStr = new FormattedString();
+            #region Assignation des contrôles
+
+            var titreFStr = new FormattedString();
 			titreFStr.Spans.Add(new Span { Text = "Avions", ForegroundColor = Color.White, FontSize = 30, FontAttributes = FontAttributes.Bold });
 
 			autopiloteImageButton = new ImageButton
@@ -74,8 +93,11 @@ namespace Avion
 				}
 			};
 		}
+        #endregion
 
-		async void PageSuivanteButton_Clicked(object sender, EventArgs e)
+        #region Navigation page suivante
+
+        async void PageSuivanteButton_Clicked(object sender, EventArgs e)
 		{
 			try
 			{
@@ -102,5 +124,8 @@ namespace Avion
 				await DisplayAlert("Erreur", ex.ToString(), "Annuler");
 			}
 		}
+		#endregion
+
+		#endregion
 	}
 }

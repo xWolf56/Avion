@@ -1,4 +1,9 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<!-- Équipe -->
+<!-- Dominic Robichaud-->
+<!-- Jonathan Levesque -->
+<!-- Martin Chiasson Duguay -->
+
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>

@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*
+        Programmeurs:
+                - Dominic Robichaud
+                - Jonathan Levesque
+                - Martin Chiasson Duguay
+    
+        Date: avril 2022
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +18,8 @@ namespace Avion
 {
     public class MunitionsPage : ContentPage
     {
+        #region Déclarations
+
         Label lblTitle;
         Label lblSubject;
         Label lblMembers;
@@ -17,14 +28,21 @@ namespace Avion
         Picker picker;
 
         Button pagePrecedenteButton;
+        #endregion
+
+        #region Init
 
         public MunitionsPage(string memberNames, string titre)
         {
             InitializeComponent(memberNames, titre);
         }
+        #endregion
 
+        #region Contrôles
         private void InitializeComponent(string memberNames, string titre)
         {
+            #region Assignation des contrôles
+
             var fsTitle = new FormattedString();
             var fsSubject = new FormattedString();
             var fsMemberNames = new FormattedString();
@@ -97,7 +115,9 @@ namespace Avion
                 }
             };
         }
+        #endregion
 
+        #region Navigation page suivante
         async void PagePrecedenteButton_Clicked(object sender, EventArgs e)
         {
             try
@@ -109,5 +129,8 @@ namespace Avion
                 await DisplayAlert("Erreur", ex.ToString(), "Annuler");
             }
         }
+        #endregion
+
+        #endregion
     }
 }
