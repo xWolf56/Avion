@@ -18,29 +18,28 @@ namespace Avion
 {
 	public class AvionsMainPage : ContentPage
 	{
-        #region Déclaration
+        #region Champs Privés
 
         ImageButton autopiloteImageButton;
 		ImageButton commandesImageButton;
 		ImageButton dateRequiseImageButton;
 		ImageButton munitionsImageButton;
-        #endregion
 
-        #region Init
+		const string MEMBRES_STR = "Dominic Robichaud\r\nJonathan Levesque\r\nMartin Chiasson-Duguay";
+		#endregion
 
-        public AvionsMainPage()
+		#region Init
+
+		public AvionsMainPage()
 		{
 			InitializeComponent();
 		}
-        #endregion
 
-        #region Contrôles
+		#region InitializeComponent
 
-        private void InitializeComponent()
+		private void InitializeComponent()
 		{
-            #region Assignation des contrôles
-
-            var titreFStr = new FormattedString();
+			var titreFStr = new FormattedString();
 			titreFStr.Spans.Add(new Span { Text = "Avions", ForegroundColor = Color.White, FontSize = 30, FontAttributes = FontAttributes.Bold });
 
 			autopiloteImageButton = new ImageButton
@@ -93,27 +92,29 @@ namespace Avion
 				}
 			};
 		}
-        #endregion
+		#endregion
 
-        #region Navigation page suivante
+		#endregion
 
-        async void PageSuivanteButton_Clicked(object sender, EventArgs e)
+		#region PageSuivanteButton_Clicked
+
+		async void PageSuivanteButton_Clicked(object sender, EventArgs e)
 		{
 			try
 			{
 				switch((sender as ImageButton).ClassId)
 				{
 					case "autopilote":
-						await Navigation.PushAsync(new AutoPilotePage("Dominic Robichaud\r\nJonathan Levesque\r\nMartin Chiasson-Duguay", "Munitions"));
+						await Navigation.PushAsync(new AutoPilotePage(MEMBRES_STR, "Auto Pilote"));
 						break;
 					case "commandes":
-						await Navigation.PushAsync(new CommandesPage("Dominic Robichaud\r\nJonathan Levesque\r\nMartin Chiasson-Duguay", "Munitions"));
+						await Navigation.PushAsync(new CommandesPage(MEMBRES_STR, "Munitions"));
 						break;
 					case "dateRequise":
-						await Navigation.PushAsync(new DateRequisePage("Dominic Robichaud\r\nJonathan Levesque\r\nMartin Chiasson-Duguay", "Date Requise"));
+						await Navigation.PushAsync(new DateRequisePage(MEMBRES_STR, "Date Requise"));
 						break;
 					case "munitions":
-						await Navigation.PushAsync(new MunitionsPage("Dominic Robichaud\r\nJonathan Levesque\r\nMartin Chiasson-Duguay", "Munitions"));
+						await Navigation.PushAsync(new MunitionsPage(MEMBRES_STR, "Munitions"));
 						break;
 					default:
 						break;
@@ -124,8 +125,6 @@ namespace Avion
 				await DisplayAlert("Erreur", ex.ToString(), "Annuler");
 			}
 		}
-		#endregion
-
 		#endregion
 	}
 }

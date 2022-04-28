@@ -18,7 +18,7 @@ namespace Avion
 {
     public class MunitionsPage : ContentPage
     {
-        #region Déclarations
+        #region Champs Prives
 
         Label lblTitle;
         Label lblSubject;
@@ -36,12 +36,10 @@ namespace Avion
         {
             InitializeComponent(memberNames, titre);
         }
-        #endregion
 
-        #region Contrôles
+        #region InitializeComponent
         private void InitializeComponent(string memberNames, string titre)
         {
-            #region Assignation des contrôles
 
             var fsTitle = new FormattedString();
             var fsSubject = new FormattedString();
@@ -80,7 +78,7 @@ namespace Avion
 
             picker = new Picker
             {
-                Title = "Something",
+                Title = "Sélectionnez un type de munitions",
                 VerticalOptions = LayoutOptions.Center
             };
 
@@ -117,7 +115,9 @@ namespace Avion
         }
         #endregion
 
-        #region Navigation page suivante
+        #endregion
+
+        #region PagePrecedenteButton_Clicked
         async void PagePrecedenteButton_Clicked(object sender, EventArgs e)
         {
             try
@@ -129,8 +129,6 @@ namespace Avion
                 await DisplayAlert("Erreur", ex.ToString(), "Annuler");
             }
         }
-        #endregion
-
         #endregion
     }
 }

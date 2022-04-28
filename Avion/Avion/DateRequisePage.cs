@@ -18,7 +18,7 @@ namespace Avion
 {
     public class DateRequisePage : ContentPage
     {
-        #region Déclarations
+        #region Champs Prives
 
         Label titreLabel;
         Label sujetLabel;
@@ -37,12 +37,10 @@ namespace Avion
         {
             InitializeComponent(memberNames, titre);
         }
-        #endregion
 
-        #region Contrôles
+        #region InitializeComponent
         private void InitializeComponent(string memberNames, string titre)
         {
-            #region Assignation des contrôles
 
             FormattedString titreFStr = new FormattedString();
             FormattedString sujetFStr = new FormattedString();
@@ -117,7 +115,9 @@ namespace Avion
         }
         #endregion
 
-        #region Navigation page suivante
+        #endregion
+
+        #region PagePrecedenteButton_Clicked
 
         async void PagePrecedenteButton_Clicked(object sender, EventArgs e)
         {
@@ -131,7 +131,5 @@ namespace Avion
             }
         }
         #endregion
-
-    #endregion
     }
 }

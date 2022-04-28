@@ -18,7 +18,7 @@ namespace Avion
 {
 	public class AutoPilotePage : ContentPage
     {
-        #region Déclarations
+        #region Champs Prives
 
         Label titreLabel;
         Label autopiloteLabel;
@@ -39,13 +39,10 @@ namespace Avion
         {
             InitializeComponent(memberNames, titre);
         }
-        #endregion
 
-        #region Contrôles
-
+        #region InitializeComponent
         private void InitializeComponent(string memberNames, string titre)
         {
-            #region Assignation des contrôles
 
             var TitreFStr = new FormattedString();
             var autopiloteFStr = new FormattedString();
@@ -134,7 +131,9 @@ namespace Avion
         }
         #endregion
 
-        #region Navigation page suivante
+        #endregion
+
+        #region PagePrecedenteButton_Clicked
         async void PagePrecedenteButton_Clicked(object sender, EventArgs e)
         {
             try
@@ -146,8 +145,6 @@ namespace Avion
                 await DisplayAlert("Erreur", ex.ToString(), "Annuler");
             }
         }
-        #endregion
-
         #endregion
     }
 }

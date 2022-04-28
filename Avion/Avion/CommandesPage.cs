@@ -18,7 +18,7 @@ namespace Avion
 {
     public class CommandesPage : ContentPage
     {
-        #region Déclaration
+        #region Champs Prives
 
         Label lblTitle;
         Label lblSubject;
@@ -41,12 +41,10 @@ namespace Avion
         {
             InitializeComponent(memberNames, titre);
         }
-        #endregion
 
-        #region Contrôles
+        #region InitializeComponent
         private void InitializeComponent(string memberNames, string titre)
         {
-            #region Assignation des contrôles
 
             var fsTitle = new FormattedString();
             var fsSubject = new FormattedString();
@@ -162,7 +160,9 @@ namespace Avion
         }
         #endregion
 
-        #region Navigation page suivante
+        #endregion
+
+        #region PagePrecedenteButton_Clicked
 
         async void PagePrecedenteButton_Clicked(object sender, EventArgs e)
         {
@@ -184,8 +184,6 @@ namespace Avion
 
             Console.WriteLine(prixTotal);
         }
-        #endregion
-
         #endregion
     }
 }
