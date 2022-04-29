@@ -43,55 +43,51 @@ namespace Avion
         #region InitializeComponent
         private void InitializeComponent(string memberNames, string titre)
         {
-
-            var TitreFStr = new FormattedString();
-            var autopiloteFStr = new FormattedString();
-            var altitudeFStr = new FormattedString();
-            var membresFStr = new FormattedString();
-
-            TitreFStr.Spans.Add(new Span { Text = titre, ForegroundColor = Color.White, FontSize = 30, FontAttributes = FontAttributes.Bold });
-
-            autopiloteFStr.Spans.Add(new Span { Text = "Activer autipilote?", ForegroundColor = Color.Red, FontSize = 15 });
-
-            altitudeFStr.Spans.Add(new Span { Text = "Altitude (entre 0 et 10)", ForegroundColor = Color.Red, FontSize = 15 });
-
-            membresFStr.Spans.Add(new Span { Text = memberNames, ForegroundColor = Color.White, FontSize = 35 });
-
             titreLabel = new Label()
             {
-                FormattedText = TitreFStr,
+                Text = titre,
+                TextColor = Color.White,
+                FontSize = 30,
+                FontAttributes = FontAttributes.Bold,
                 HorizontalOptions = LayoutOptions.Center,
                 BackgroundColor = Color.Black
             };
 
             autopiloteLabel = new Label()
             {
-                FormattedText = autopiloteFStr,
-                HorizontalOptions = LayoutOptions.Center
+                Text = "Activer autopilote?",
+                TextColor = Color.Red,
+                FontSize = 15
             };
 
             valeurAutopilotLabel = new Label()
             {
+                TextColor = Color.LimeGreen
+            };
+
+            autopiloteSwitch = new Switch()
+            {
                 HorizontalOptions = LayoutOptions.Center
             };
 
-            autopiloteSwitch = new Switch();
-
             altitudeLabel = new Label()
             {
-                FormattedText = altitudeFStr,
-                HorizontalOptions = LayoutOptions.Center
+                Text = "Altitude (entre 0 et 10)",
+                TextColor = Color.Red,
+                FontSize = 15,
             };
 
             valeurAltitudeLabel = new Label()
             {
-                HorizontalOptions = LayoutOptions.Center
+                TextColor = Color.LimeGreen
             };
 
             altitudeSlider = new Slider()
             {
                 Maximum = 10,
-                Minimum = 0
+                Minimum = 0,
+                WidthRequest = 200,
+                HorizontalOptions = LayoutOptions.Center
             };
 
             pagePrecedenteButton = new Button
@@ -103,15 +99,24 @@ namespace Avion
 
             membresLabel = new Label()
             {
-                FormattedText = membresFStr,
+                Text = memberNames,
+                TextColor = Color.White,
+                FontSize = 35,
                 HorizontalOptions = LayoutOptions.Center,
                 BackgroundColor = Color.Black
             };
 
             pagePrecedenteButton.Clicked += PagePrecedenteButton_Clicked;
 
-            autopiloteSwitch.Toggled += (sender, args) => { valeurAutopilotLabel.Text = autopiloteSwitch.IsToggled.ToString(); };
-            altitudeSlider.ValueChanged += (sender, args) => { valeurAltitudeLabel.Text = altitudeSlider.Value.ToString(); };
+            autopiloteSwitch.Toggled += (sender, args) => 
+            { 
+                valeurAutopilotLabel.Text = autopiloteSwitch.IsToggled.ToString(); 
+            };
+
+            altitudeSlider.ValueChanged += (sender, args) => 
+            { 
+                valeurAltitudeLabel.Text = altitudeSlider.Value.ToString(); 
+            };
 
             this.Content = new StackLayout
             {

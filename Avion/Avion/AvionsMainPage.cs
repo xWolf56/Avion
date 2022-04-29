@@ -43,16 +43,14 @@ namespace Avion
 
 		private void InitializeComponent()
 		{
-			var titreFStr = new FormattedString();
-			titreFStr.Spans.Add(new Span { Text = "Avions", ForegroundColor = Color.White, FontSize = 30, FontAttributes = FontAttributes.Bold });
-
-			var membresFStr = new FormattedString();
-			membresFStr.Spans.Add(new Span { Text = MEMBRES_STR, ForegroundColor = Color.White, FontSize = 30, FontAttributes = FontAttributes.Bold });
-
 			titreLabel = new Label()
 			{
-				FormattedText = titreFStr,
-				HorizontalOptions = LayoutOptions.Center,
+				Text = "Avions",
+				TextColor = Color.White,
+				FontSize = 30,
+				FontAttributes = FontAttributes.Bold,
+				HorizontalTextAlignment = TextAlignment.Center,
+				HorizontalOptions = LayoutOptions.Fill,
 				BackgroundColor = Color.Black
 			};
 
@@ -98,8 +96,12 @@ namespace Avion
 
 			membresLabel = new Label()
 			{
-				FormattedText = membresFStr,
-				HorizontalOptions = LayoutOptions.Center,
+				Text = MEMBRES_STR,
+				TextColor = Color.White,
+				FontSize = 30,
+				FontAttributes = FontAttributes.Bold,
+				HorizontalTextAlignment = TextAlignment.Center,
+				HorizontalOptions = LayoutOptions.FillAndExpand,
 				BackgroundColor = Color.Black
 			};
 

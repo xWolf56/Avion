@@ -20,13 +20,13 @@ namespace Avion
     {
         #region Champs Prives
 
-        Label lblTitle;
-        Label lblSubject;
-        Label lblMembers;
-        Label lblQuantiteStr;
-        Label lblPrixStr;
-        Label lblPrixTotal;
-        Label lblPrixTotalStr;
+        Label titreLabel;
+        Label sujetLabel;
+        Label membresLabel;
+        Label quantiteLabel;
+        Label prixLabel;
+        Label prixTotalLabel;
+        Label affichagePrixTotalLabel;
 
         Button pagePrecedenteButton;
         Button calculerButton;
@@ -45,33 +45,29 @@ namespace Avion
         #region InitializeComponent
         private void InitializeComponent(string memberNames, string titre)
         {
-
-            var fsTitle = new FormattedString();
-            var fsSubject = new FormattedString();
-            var fsMemberNames = new FormattedString();
-
-            fsTitle.Spans.Add(new Span { Text = "Calculer prix avion", ForegroundColor = Color.White, FontSize = 30, FontAttributes = FontAttributes.Bold });
-
-            fsSubject.Spans.Add(new Span { Text = "Calculer une marque spécifique d'avions avec leur prix", ForegroundColor = Color.Red, FontSize = 15 });
-
-            fsMemberNames.Spans.Add(new Span { Text = memberNames, ForegroundColor = Color.White, FontSize = 35 });
-
-            lblTitle = new Label()
+            titreLabel = new Label()
             {
-                FormattedText = fsTitle,
+                Text = titre,
+                TextColor = Color.White,
+                FontSize = 30,
+                FontAttributes = FontAttributes.Bold,
                 HorizontalOptions = LayoutOptions.Center,
                 BackgroundColor = Color.Black
             };
 
-            lblSubject = new Label()
+            sujetLabel = new Label()
             {
-                FormattedText = fsSubject,
+                Text = "Calculer une marque spécifique d'avions avec leur prix",
+                TextColor = Color.Red,
+                FontSize = 15,
                 HorizontalOptions = LayoutOptions.Center
             };
 
-            lblMembers = new Label()
+            membresLabel = new Label()
             {
-                FormattedText = fsMemberNames,
+                Text = memberNames,
+                TextColor = Color.White,
+                FontSize = 35,
                 HorizontalOptions = LayoutOptions.Center,
                 BackgroundColor = Color.Black
             };
@@ -85,9 +81,10 @@ namespace Avion
 
             pagePrecedenteButton.Clicked += PagePrecedenteButton_Clicked;
 
-            lblQuantiteStr = new Label
+            quantiteLabel = new Label
             {
                 Text = "Quantite d'avions: ",
+                TextColor = Color.Red,
                 FontSize = 12,
                 FontAttributes = FontAttributes.Bold,
                 HorizontalOptions = LayoutOptions.Start
@@ -96,14 +93,16 @@ namespace Avion
             quantiteAvionEntry = new Entry
             {
                 Placeholder = "0",
+                TextColor = Color.LimeGreen,
                 VerticalOptions = LayoutOptions.Start,
                 Keyboard = Keyboard.Text
             };
 
-            lblPrixStr = new Label
+            prixLabel = new Label
             {
                 Text = "Prix par avion: ",
                 FontSize = 12,
+                TextColor = Color.Red,
                 FontAttributes = FontAttributes.Bold,
                 HorizontalOptions = LayoutOptions.Start
             };
@@ -111,6 +110,7 @@ namespace Avion
             prixAvionEntry = new Entry
             {
                 Placeholder = "0.00",
+                TextColor = Color.LimeGreen,
                 VerticalOptions = LayoutOptions.Start,
                 Keyboard = Keyboard.Text
             };
@@ -124,17 +124,19 @@ namespace Avion
 
             calculerButton.Clicked += CalculerPrixAvions_Clicked;
 
-            lblPrixTotalStr = new Label
+            affichagePrixTotalLabel = new Label
             {
                 Text = "Prix total: ",
+                TextColor = Color.Red,
                 FontSize = 12,
                 FontAttributes = FontAttributes.Bold,
                 HorizontalOptions = LayoutOptions.Start
             };
 
-            lblPrixTotal = new Label
+            prixTotalLabel = new Label
             {
                 Text = "",
+                TextColor = Color.LimeGreen,
                 FontSize = 12,
                 FontAttributes = FontAttributes.Bold,
                 HorizontalOptions = LayoutOptions.Start
@@ -144,17 +146,17 @@ namespace Avion
             {
                 Children =
                 {
-                    lblTitle,
-                    lblSubject,
-                    lblQuantiteStr,
+                    titreLabel,
+                    sujetLabel,
+                    quantiteLabel,
                     quantiteAvionEntry,
-                    lblPrixStr,
+                    prixLabel,
                     prixAvionEntry,
                     calculerButton,
-                    lblPrixTotalStr,
-                    lblPrixTotal,
+                    affichagePrixTotalLabel,
+                    prixTotalLabel,
                     pagePrecedenteButton,
-                    lblMembers
+                    membresLabel
                 }
             };
         }
@@ -176,13 +178,25 @@ namespace Avion
             }
         }
 
-        private void CalculerPrixAvions_Clicked(object sender, EventArgs e) 
+		#endregion
+
+		#region CalculerPrixAvions_Clicked
+
+		private async void CalculerPrixAvions_Clicked(object sender, EventArgs e)
         {
-            double prixTotal = (double.Parse(quantiteAvionEntry.Text) * double.Parse(prixAvionEntry.Text));
+            try
+            {
+                if (int.TryParse(quantiteAvionEntry.Text, out int quantiteAvions) && double.TryParse(prixAvionEntry.Text, out double prixAvion))
+                {
+                    double prixTotal = quantiteAvions * prixAvion;
 
-            lblPrixTotal.Text = prixTotal.ToString();
-
-            Console.WriteLine(prixTotal);
+                    prixTotalLabel.Text = prixTotal.ToString("C2");
+                }
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Erreur", ex.ToString(), "Annuler");
+            }
         }
         #endregion
     }

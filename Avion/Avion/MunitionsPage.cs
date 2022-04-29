@@ -20,12 +20,12 @@ namespace Avion
     {
         #region Champs Prives
 
-        Label lblTitle;
-        Label lblSubject;
-        Label lblMembers;
-        Label pickerValue;
+        Label titreLabel;
+        Label sujetLabel;
+        Label membresLabel;
+        Label munitionSelectionneeLabel;
 
-        Picker picker;
+        Picker munitionsPicker;
 
         Button pagePrecedenteButton;
         #endregion
@@ -40,56 +40,45 @@ namespace Avion
         #region InitializeComponent
         private void InitializeComponent(string memberNames, string titre)
         {
-
-            var fsTitle = new FormattedString();
-            var fsSubject = new FormattedString();
-            var fsMemberNames = new FormattedString();
-
-            fsTitle.Spans.Add(new Span { Text = titre, ForegroundColor = Color.White, FontSize = 30, FontAttributes = FontAttributes.Bold });
-
-            fsSubject.Spans.Add(new Span { Text = "Munitions aéronautiques", ForegroundColor = Color.Red, FontSize = 15 });
-
-            fsMemberNames.Spans.Add(new Span { Text = memberNames, ForegroundColor = Color.White, FontSize = 35 });
-
-            lblTitle = new Label()
+            titreLabel = new Label()
             {
-                FormattedText = fsTitle,
+                Text = titre,
+                TextColor = Color.White,
+                FontSize = 30,
+                FontAttributes = FontAttributes.Bold,
                 HorizontalOptions = LayoutOptions.Center,
                 BackgroundColor = Color.Black
             };
 
-            lblSubject = new Label()
+            sujetLabel = new Label()
             {
-                FormattedText = fsSubject,
+                Text = "Munition Sélectionnée",
+                TextColor = Color.Red,
+                FontSize = 15,
                 HorizontalOptions = LayoutOptions.Center
             };
 
-            lblMembers = new Label()
+            membresLabel = new Label()
             {
-                FormattedText = fsMemberNames,
+                Text = memberNames,
+                TextColor = Color.White,
+                FontSize = 35,
                 HorizontalOptions = LayoutOptions.Center,
                 BackgroundColor = Color.Black
             };
 
-            pickerValue = new Label()
+            munitionSelectionneeLabel = new Label()
             {
+                TextColor = Color.LimeGreen,
                 HorizontalOptions = LayoutOptions.Center
             };
 
-            picker = new Picker
+            munitionsPicker = new Picker
             {
                 Title = "Sélectionnez un type de munitions",
-                VerticalOptions = LayoutOptions.Center
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.Center
             };
-
-            var options = new List<string> { "Bombe 500 lbs", "Bombe 250 lbs", "Unites de bombe a fragmentation", "Fusees eclairantes", "Grenades fumigenes" };
-
-            foreach (string optionName in options)
-            {
-                picker.Items.Add(optionName);
-            }
-
-            picker.SelectedIndexChanged += (sender, args) => { pickerValue.Text = picker.Items[picker.SelectedIndex]; };
 
             pagePrecedenteButton = new Button
             {
@@ -98,18 +87,37 @@ namespace Avion
                 VerticalOptions = LayoutOptions.Fill
             };
 
+            var options = new List<string> 
+            { 
+                "Bombe 500 lbs", 
+                "Bombe 250 lbs", 
+                "Unites de bombe a fragmentation", 
+                "Fusees eclairantes", 
+                "Grenades fumigenes" 
+            };
+
+            foreach (string optionName in options)
+            {
+                munitionsPicker.Items.Add(optionName);
+            }
+
+            munitionsPicker.SelectedIndexChanged += (sender, args) => 
+            { 
+                munitionSelectionneeLabel.Text = munitionsPicker.Items[munitionsPicker.SelectedIndex]; 
+            };
+
             pagePrecedenteButton.Clicked += PagePrecedenteButton_Clicked;
 
             this.Content = new StackLayout
             {
                 Children =
                 {
-                    lblTitle,
-                    lblSubject,
-                    pickerValue,
-                    picker,
+                    titreLabel,
+                    sujetLabel,
+                    munitionSelectionneeLabel,
+                    munitionsPicker,
                     pagePrecedenteButton,
-                    lblMembers
+                    membresLabel
                 }
             };
         }

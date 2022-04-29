@@ -41,38 +41,33 @@ namespace Avion
         #region InitializeComponent
         private void InitializeComponent(string memberNames, string titre)
         {
-
-            FormattedString titreFStr = new FormattedString();
-            FormattedString sujetFStr = new FormattedString();
-            FormattedString membresFStr = new FormattedString();
-
-            titreFStr.Spans.Add(new Span { Text = titre, ForegroundColor = Color.White, FontSize = 30, FontAttributes = FontAttributes.Bold });
-
-            sujetFStr.Spans.Add(new Span { Text = "Sélectionner la date et l'heure requise pour la commande", ForegroundColor = Color.Red, FontSize = 15 });
-
-            membresFStr.Spans.Add(new Span { Text = memberNames, ForegroundColor = Color.White, FontSize = 35 });
-
             titreLabel = new Label()
             {
-                FormattedText = titreFStr,
+                Text = titre,
+                TextColor = Color.White,
+                FontSize = 30,
+                FontAttributes = FontAttributes.Bold,
                 HorizontalOptions = LayoutOptions.Center,
                 BackgroundColor = Color.Black
             };
 
             sujetLabel = new Label()
             {
-                FormattedText = sujetFStr,
-                HorizontalOptions = LayoutOptions.Center
+                Text = "Sélectionner la date et l'heure requise pour la commande",
+                TextColor = Color.Red,
+                FontSize = 15
             };
 
             valeurDateLabel = new Label()
             {
-                HorizontalOptions = LayoutOptions.Center
+                TextColor = Color.LimeGreen
             };
 
             membresLabel = new Label()
             {
-                FormattedText = membresFStr,
+                Text = memberNames,
+                TextColor = Color.White,
+                FontSize = 35,
                 HorizontalOptions = LayoutOptions.Center,
                 BackgroundColor = Color.Black
             };
@@ -96,8 +91,15 @@ namespace Avion
 
             pagePrecedenteButton.Clicked += PagePrecedenteButton_Clicked;
 
-            datePicker.DateSelected += (sender, args) => { valeurDateLabel.Text = $"{datePicker.Date} {timePicker.Time}"; };
-            timePicker.PropertyChanged += (sender, args) => { valeurDateLabel.Text = $"{datePicker.Date} {timePicker.Time}"; };
+            datePicker.DateSelected += (sender, args) => 
+            { 
+                valeurDateLabel.Text = $"{datePicker.Date.ToLongDateString()} {timePicker.Time:T}"; 
+            };
+
+            timePicker.PropertyChanged += (sender, args) => 
+            { 
+                valeurDateLabel.Text = $"{datePicker.Date.ToLongDateString()} {timePicker.Time:T}"; 
+            };
 
             this.Content = new StackLayout
             {
